@@ -16,8 +16,14 @@ function closeScript() {
 }
 
 readLine.write(`Please, type text for new file. \n`);
+
 readLine.on('line', (value) =>
   value.trim().toLocaleLowerCase() === 'exit'
     ? closeScript()
     : resultFile.write(`${value} \n`)
 );
+
+process.on('beforeExit', () => {
+  readLine.write(`Bye-bye! :)`);
+  exit();
+});
