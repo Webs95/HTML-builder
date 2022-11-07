@@ -21,12 +21,12 @@ const createCopy = async () => {
   }
 };
 
-const clearCopy = async () => {
+async function clearCopy() {
   const copyFile = await readdir(copyFilesPath);
 
   for (let file of copyFile) {
     await rm(path.join(copyFile, file), { force: true });
   }
-};
+}
 
 createCopy();
